@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CUDA_ARCHITECTURES 89) # 4070
 
 # Set the CUDA compiler path or name
-set(CMAKE_CUDA_COMPILER "/usr/local/cuda/bin/nvcc")
+set(CMAKE_CUDA_COMPILER "/usr/bin/nvcc") # apt installed
 
 project(llama_infer CXX CUDA)
 include(cmake/cuda.cmake)
@@ -31,11 +32,11 @@ if(USE_CPM)
   # Use CPM to manage dependencies
   include(cmake/CPM.cmake)
 
-  CPMAddPackage(
-    NAME GTest
-    GITHUB_REPOSITORY google/googletest
-    VERSION 1.15.0
-  )
+#  CPMAddPackage(
+#    NAME GTest
+#    GITHUB_REPOSITORY google/googletest
+#    VERSION 1.15.0
+#  )
 
   CPMAddPackage(
     NAME glog
